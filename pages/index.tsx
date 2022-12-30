@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Card, Search, Toggle } from "../components";
 
 export default function Home() {
   return (
@@ -9,7 +10,19 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main></main>
+      <main className="h-full">
+        <div className="flex justify-end p-4 md:py-12 md:px-32">
+          <Toggle />
+        </div>
+        <div className="flex justify-center">
+          <div className="min-w-[784px]">
+            <Search />
+          </div>
+        </div>
+        <div>
+          <Card />
+        </div>
+      </main>
     </>
   );
 }

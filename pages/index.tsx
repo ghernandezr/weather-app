@@ -1,37 +1,6 @@
 import Head from "next/head";
 import { Search, Toggle, CardList } from "../features";
 
-import WeatherInfo from "../model/WeatherInfo";
-
-const testModel: WeatherInfo = {
-  city: "Washintong DC",
-  longitude: 38.9,
-  latitude: 77.0369,
-  icon: "wi-day-thunderstorm",
-  temperatures: [
-    {
-      day: "TODAY",
-      value: 32,
-    },
-    {
-      day: "SUN",
-      value: 32,
-    },
-    {
-      day: "MON",
-      value: 32,
-    },
-    {
-      day: "TUE",
-      value: 32,
-    },
-    {
-      day: "WED",
-      value: 32,
-    },
-  ],
-};
-
 export default function Home() {
   return (
     <>

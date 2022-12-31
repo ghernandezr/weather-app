@@ -21,8 +21,6 @@ export const useSubmit = () => {
         temperatureUnit: degree,
       });
 
-      console.log(response.data);
-
       if (response.status === 200) {
         const data = response.data;
 

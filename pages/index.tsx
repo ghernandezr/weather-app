@@ -50,7 +50,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex gap-4 flex-wrap justify-center my-48 px-4">
-          <EmptyList />
+          <Card weather={testModel} />
         </div>
       </main>
     </>

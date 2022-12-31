@@ -5,9 +5,9 @@ import { remoceCard, selectCards } from "./cardListSlice";
 import { isAbove30 } from "./useIsAbove30";
 
 const CardList = () => {
+  const dispatch = useAppDispatch();
   const weatherList = useAppSelector(selectCards);
   const { calculateAverage } = isAbove30();
-  const dispatch = useAppDispatch();
 
   const handleRemoveCard = (id: number) => {
     dispatch(remoceCard(id));

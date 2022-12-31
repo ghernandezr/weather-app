@@ -2,11 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Degree } from "../../model";
 import WeatherInfo from "../../model/WeatherInfo";
 import type { RootState } from "../../store";
-
-const conversor = {
-  [Degree.F]: (value: number) => value * 1.8 + 32,
-  [Degree.C]: (value: number) => (value - 32) / 1.8,
-};
+import { temperatureConverter } from "../../utils/temperatureConverter";
 
 // declaring the types for our state
 export type CardListState = {
@@ -33,7 +29,7 @@ export const cardListSlice = createSlice({
       state.value = filtered;
     },
     convertToDegree: (state, action: PayloadAction<Degree>) => {
-      const degreeConversor = conversor[action.payload];
+      const degreeConversor = temperatureConverter[action.payload];
 
       state.value = state.value.map((card) => {
         return {

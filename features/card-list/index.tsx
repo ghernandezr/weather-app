@@ -2,9 +2,11 @@ import React from "react";
 import { Card, EmptyList } from "../../components";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { remoceCard, selectCards } from "./cardListSlice";
+import { isAbove30 } from "./useIsAbove30";
 
 const CardList = () => {
   const weatherList = useAppSelector(selectCards);
+  const { calculateAverage } = isAbove30();
   const dispatch = useAppDispatch();
 
   const handleRemoveCard = (id: number) => {
@@ -13,9 +15,7 @@ const CardList = () => {
 
   const generateCards = () => {
     return weatherList?.map((weather) => {
-      const sumTemp =
-        weather?.temperatures?.reduce((acc, curr) => acc + curr.value!, 0) || 0;
-      const averageTemp = sumTemp / weather?.temperatures?.length!;
+      const averageTemp = calculateAverage(weather?.temperatures || []);
       return (
         <Card
           key={weather?.id}

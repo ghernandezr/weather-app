@@ -2,7 +2,7 @@ import Temperature from "./Temperature";
 
 interface WeatherInfo {
   city?: string;
-  weatherCode?: number;
+  icon?: string;
   latitude?: number;
   longitude?: number;
   temperatures?: Temperature[];

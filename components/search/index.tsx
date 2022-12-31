@@ -11,15 +11,15 @@ const Search = (props: SearchProps) => {
     useSubmitSearch(onSubmit);
 
   return (
-    <div className="flex items-center gap-3">
-      <div className="relative flex-1 rounded-md">
+    <div className="flex items-center gap-3 sm:flex-row flex-col">
+      <div className="relative w-full flex-1 rounded-md">
         <input
           type="text"
           name="price"
           id="price"
           value={country}
           onChange={handleValueChange}
-          className="block w-full rounded-2xl border-gray-300 px-4 sm:text-lg h-14 outline-none"
+          className="block w-full rounded-2xl border-gray-300 px-4  sm:text-lg h-14 outline-none"
           placeholder="Enter a city name"
         />
       </div>
@@ -27,7 +27,7 @@ const Search = (props: SearchProps) => {
         className="bg-[#219EBC] min-w-[220px] h-14 rounded-full text-center text-white text-xl"
         onClick={handleSubmit}
       >
-        submit
+        Submit
       </button>
     </div>
   );

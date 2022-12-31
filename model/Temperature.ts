@@ -1,5 +1,5 @@
 interface Temperature {
-  date?: any;
+  day?: string;
   value?: number;
 }
 

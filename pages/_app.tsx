@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "../styles/weather-icons.min.css";
 import { useState } from "react";
 import type { AppProps } from "next/app";
 

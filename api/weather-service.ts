@@ -1,4 +1,6 @@
 import axios from "axios";
+import moment from "moment";
+
 import { Degree } from "../model";
 
 export const searchCityByName = (cityName: string) => {
@@ -24,6 +26,8 @@ export const getWeatherForCity = (data: GetWeatherForCityProps) => {
       current_weather: true,
       temperature_unit: temperatureUnit,
       hourly: "temperature_2m",
+      start_date: moment().format("YYYY-MM-DD"),
+      end_date: moment().add(4, "d").format("YYYY-MM-DD"),
     },
   });
 };

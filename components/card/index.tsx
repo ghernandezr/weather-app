@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import WeatherInfo from "../../model/WeatherInfo";
 import TemperatureItem from "./components/TemperatureItem";
 
 interface CardProps {
+  isAbove30?: boolean;
   weather: WeatherInfo;
   onRemove: (id: number) => void;
 }
 
 const Card = (props: CardProps) => {
-  const { weather, onRemove } = props;
+  const { weather, isAbove30 = false, onRemove } = props;
 
   const generateTemperatureItems = () => {
     return weather?.temperatures?.map((temp, index) => (
@@ -23,11 +24,17 @@ const Card = (props: CardProps) => {
 
   return (
     <div
-      className={`group  rounded-3xl w-[500px] h-[425px] bg-gradient-to-r from-[#000000] to-[#023047] text-white`}
+      className={`group  rounded-3xl w-[500px] h-[425px]  ${
+        isAbove30
+          ? "bg-[#FFB703]"
+          : "bg-gradient-to-r from-[#000000] to-[#023047]"
+      }  text-white`}
     >
       <div className="flex items-center justify-between px-9 py-9">
         <i
-          className={`wi ${weather.icon} text-4xl sm:text-6xl text-[#8ECAE6]`}
+          className={`wi ${weather.icon} text-4xl sm:text-6xl ${
+            isAbove30 ? "text-[#FB8500]" : "text-[#8ECAE6]"
+          }`}
         ></i>
         <div>
           <h1 className="text-xl sm:text-[32px]">{weather.city}</h1>

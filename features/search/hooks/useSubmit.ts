@@ -2,9 +2,11 @@ import { getWeatherForCity } from "../../../api/weather-service";
 import Icons from "../../../constants/icons";
 import WeatherInfo from "../../../model/WeatherInfo";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { extractTemperature } from "../../../utils/extractTemperature";
 import { addCard } from "../../card-list/cardListSlice";
-import { selectCountry } from "../../country/countrySlice";
+import { selectCountry, updateCountry } from "../../country/countrySlice";
 import { selectDegree } from "../../toggle/toggleSlice";
+import { updateSearchTerm } from "../searchSlice";
 
 export const useSubmit = () => {
   const country = useAppSelector(selectCountry);
@@ -24,16 +26,23 @@ export const useSubmit = () => {
       if (response.status === 200) {
         const data = response.data;
 
+        const temperatures = extractTemperature(
+          data?.hourly,
+          data?.current_weather?.temperature
+        );
+
         const weatherInfo: WeatherInfo = {
           id: country?.id,
           city: country?.name,
-          latitude: data?.latitude,
-          longitude: data?.longitude,
+          latitude: parseFloat(data?.latitude?.toFixed(4)),
+          longitude: parseFloat(data?.longitude?.toFixed(4)),
           icon: Icons[data?.current_weather?.weathercode] as string,
-          temperatures: [],
+          temperatures: temperatures,
         };
 
         dispatch(addCard(weatherInfo));
+        dispatch(updateSearchTerm(""));
+        dispatch(updateCountry(null));
       }
     } catch (err) {
       console.log(err);

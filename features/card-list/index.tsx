@@ -13,8 +13,16 @@ const CardList = () => {
 
   const generateCards = () => {
     return weatherList?.map((weather) => {
+      const sumTemp =
+        weather?.temperatures?.reduce((acc, curr) => acc + curr.value!, 0) || 0;
+      const averageTemp = sumTemp / weather?.temperatures?.length!;
       return (
-        <Card key={weather?.id} weather={weather} onRemove={handleRemoveCard} />
+        <Card
+          key={weather?.id}
+          isAbove30={averageTemp > 30}
+          weather={weather}
+          onRemove={handleRemoveCard}
+        />
       );
     });
   };

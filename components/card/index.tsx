@@ -1,4 +1,5 @@
 import React from "react";
+import { TrashIcon } from "@heroicons/react/24/solid";
 import WeatherInfo from "../../model/WeatherInfo";
 import TemperatureItem from "./components/TemperatureItem";
 
@@ -36,7 +37,9 @@ const Card = (props: CardProps) => {
       <div className="flex px-4 md:px-8 justify-between items-center mt-16">
         {generateTemperatureItems()}
       </div>
-      <div></div>
+      <div>
+        <TrashIcon />
+      </div>
     </div>
   );
 };

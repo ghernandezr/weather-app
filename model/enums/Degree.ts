@@ -1,6 +1,6 @@
 enum Degree {
-  F = "F",
-  C = "C",
+  F = "fahrenheit",
+  C = "celsius",
 }
 
 export default Degree;

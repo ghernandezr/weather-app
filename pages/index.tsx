@@ -1,5 +1,6 @@
 import Head from "next/head";
-import { Card, EmptyList, Search, Toggle } from "../components";
+import { Search, Toggle, CardList } from "../features";
+
 import WeatherInfo from "../model/WeatherInfo";
 
 const testModel: WeatherInfo = {
@@ -49,8 +50,8 @@ export default function Home() {
             <Search />
           </div>
         </div>
-        <div className="flex gap-4 flex-wrap justify-center my-48 px-4">
-          <Card weather={testModel} />
+        <div className="my-48 px-4">
+          <CardList />
         </div>
       </main>
     </>

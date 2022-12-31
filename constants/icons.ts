@@ -1,4 +1,4 @@
-const Icons = {
+const Icons: { [key: number]: unknown } = {
   0: "wi-day-sunny",
   1: "wi-day-sunny-overcast",
   2: "wi-day-sunny-overcast",

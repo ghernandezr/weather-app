@@ -1,19 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { Degree } from "../../model";
-import { useDegreeToggle } from "./hooks";
 
-interface ToggleProps {
-  onDegreeToggleChange?: (value: Degree) => void;
+interface ToggleDegreeProps {
+  degree: Degree;
+  onToggle: () => void;
 }
 
-const Toggle = (props: ToggleProps) => {
-  const { onDegreeToggleChange } = props;
-  const { degree, handleToggle } = useDegreeToggle(onDegreeToggleChange);
+const ToggleDegree = (props: ToggleDegreeProps) => {
+  const { degree, onToggle } = props;
 
   return (
     <div
       className="bg-[#99A4A9] select-none w-[116px] h-[51px] p-[5px] cursor-pointer rounded-full flex items-center relative"
-      onClick={handleToggle}
+      onClick={onToggle}
     >
       <div
         className={`bg-white rounded-full w-11 h-11 absolute transition-transform ${
@@ -26,4 +25,4 @@ const Toggle = (props: ToggleProps) => {
   );
 };
 
-export default Toggle;
+export default ToggleDegree;

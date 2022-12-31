@@ -1,6 +1,7 @@
 import Temperature from "./Temperature";
 
 interface WeatherInfo {
+  id?: number;
   city?: string;
   icon?: string;
   latitude?: number;

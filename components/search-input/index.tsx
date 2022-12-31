@@ -29,7 +29,7 @@ const SearchInput = React.forwardRef<HTMLDivElement, SearchProps>(
             onClick={(e: any) => {
               onSuggestionClick?.(sugg);
             }}
-          >{`${sugg?.name} - ${sugg?.admin1} - ${sugg?.country}`}</div>
+          >{`${sugg?.name} - ${sugg?.admin1 || ""} - ${sugg?.country}`}</div>
         );
       });
     };

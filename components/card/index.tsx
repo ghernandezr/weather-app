@@ -24,7 +24,7 @@ const Card = (props: CardProps) => {
 
   return (
     <div
-      className={`group  rounded-3xl w-[500px] h-[425px]  ${
+      className={`group  rounded-3xl w-[500px] h-[425px] transition-colors  ease-in-out delay-75 ${
         isAbove30
           ? "bg-[#FFB703]"
           : "bg-gradient-to-r from-[#000000] to-[#023047]"
@@ -32,7 +32,9 @@ const Card = (props: CardProps) => {
     >
       <div className="flex items-center justify-between px-9 py-9">
         <i
-          className={`wi ${weather.icon} text-4xl sm:text-6xl ${
+          className={`wi ${
+            weather.icon
+          } transition-colors ease-in-out delay-75 text-4xl sm:text-6xl ${
             isAbove30 ? "text-[#FB8500]" : "text-[#8ECAE6]"
           }`}
         ></i>

@@ -1,5 +1,6 @@
 import { Degree } from "../../model";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { convertToDegree } from "../card-list/cardListSlice";
 import { selectDegree, updateDegree } from "./toggleSlice";
 
 export const useDegreeToggle = () => {
@@ -9,6 +10,7 @@ export const useDegreeToggle = () => {
   const handleToggle = () => {
     const nextDegree = degree === Degree.F ? Degree.C : Degree.F;
     dispatch(updateDegree(nextDegree));
+    dispatch(convertToDegree(nextDegree));
   };
 
   return {

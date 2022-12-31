@@ -3,6 +3,11 @@ import { Degree } from "../../model";
 import WeatherInfo from "../../model/WeatherInfo";
 import type { RootState } from "../../store";
 
+const conversor = {
+  [Degree.F]: (value: number) => value * 1.8 + 32,
+  [Degree.C]: (value: number) => (value - 32) / 1.8,
+};
+
 // declaring the types for our state
 export type CardListState = {
   value: WeatherInfo[];
@@ -27,9 +32,24 @@ export const cardListSlice = createSlice({
       const filtered = state.value.filter((item) => item.id !== action.payload);
       state.value = filtered;
     },
+    convertToDegree: (state, action: PayloadAction<Degree>) => {
+      const degreeConversor = conversor[action.payload];
+
+      state.value = state.value.map((card) => {
+        return {
+          ...card,
+          temperatures: card.temperatures?.map((temp) => {
+            return {
+              ...temp,
+              value: parseFloat(degreeConversor(temp.value!).toFixed(1)),
+            };
+          }),
+        };
+      });
+    },
   },
 });
-export const { addCard, remoceCard } = cardListSlice.actions;
+export const { addCard, remoceCard, convertToDegree } = cardListSlice.actions;
 
 export const selectCards = (state: RootState) => state.cards.value;
 

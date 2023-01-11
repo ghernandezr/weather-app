@@ -4,9 +4,9 @@ import WeatherInfo from "../../model/WeatherInfo";
 import TemperatureItem from "./components/TemperatureItem";
 
 interface CardProps {
-  isAbove30?: boolean;
   weather: WeatherInfo;
-  onRemove: (id: number) => void;
+  isAbove30?: boolean;
+  onRemove?: (id: number) => void;
 }
 
 const Card = (props: CardProps) => {
@@ -24,6 +24,7 @@ const Card = (props: CardProps) => {
 
   return (
     <div
+      data-testid="card"
       className={`group  rounded-3xl w-[500px] h-[425px] transition-colors  ease-in-out delay-75 ${
         isAbove30
           ? "bg-[#FFB703]"
@@ -50,8 +51,9 @@ const Card = (props: CardProps) => {
       </div>
       <div className="flex items-center justify-center mt-16 ">
         <TrashIcon
+          data-testid="trash-icon"
           className="h-9 w-9 hidden cursor-pointer group-hover:block"
-          onClick={() => onRemove(weather?.id!)}
+          onClick={() => onRemove?.(weather?.id!)}
         />
       </div>
     </div>

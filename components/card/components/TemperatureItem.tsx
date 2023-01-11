@@ -9,7 +9,7 @@ interface TemperatureProps {
 const TemperatureItem = (props: TemperatureProps) => {
   const { temperature, divider = true } = props;
   return (
-    <div className="text-center">
+    <div className="text-center" data-testid="temperature-item">
       <h1 className="uppercase sm:text-[28px]">
         {temperature.day} {divider && "|"}
       </h1>

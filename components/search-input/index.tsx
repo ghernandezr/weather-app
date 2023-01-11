@@ -48,12 +48,16 @@ const SearchInput = React.forwardRef<HTMLDivElement, SearchProps>(
             placeholder="Enter a city name"
           />
           {openSugg && (
-            <div className="absolute bg-white w-full mt-1 rounded-lg p-5 max-h-36 overflow-auto">
+            <div
+              data-testid="suggs"
+              className="absolute bg-white w-full mt-1 rounded-lg p-5 max-h-36 overflow-auto"
+            >
               {generateSuggestions()}
             </div>
           )}
         </div>
         <button
+          data-testid="submit"
           className="bg-[#219EBC] min-w-[220px] h-14 rounded-full text-center text-white text-xl"
           onClick={() => {
             onSubmit?.();
